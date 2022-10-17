@@ -204,9 +204,9 @@ Also note the **`$`** symbol before categories in line 23. This means that the p
 
 This is similar to categories.  Again there is a subscription to  **`$products`** so that the page is updated whenever the store updates. You will see this when a category link is clicked.
 
-![image-20221016235829032](C:\Users\elee-tudublin\AppData\Roaming\Typora\typora-user-images\image-20221016235829032.png)
 
 
+![product_table](./media/product_table.png)
 
 ## Test the Application
 
