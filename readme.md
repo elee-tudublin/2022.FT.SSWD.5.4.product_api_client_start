@@ -216,7 +216,33 @@ In a web browser, open http://localhost:5173. The page should load and display t
 
 Check for details in the browser console where you will say the result of any logging, errors, etc.
 
-![finished](./media/finished.png)
+``` html
+          <div id="products">
+            <table class="table table-striped table-bordered table-hover">
+              <thead>
+                <tr>
+                  <th>id</th>
+                  <th>name</th>
+                  <th>description</th>
+                  <th>stock</th>
+                  <th>price</th>
+                </tr>
+              </thead>
+              <tbody id="productRows">
+                <!-- Product Rows to be inserted here -->
+                {#each $products as product }
+                <tr>
+                    <td>{product.id}</td>
+                    <td>{product.product_name}</td>
+                    <td>{product.product_description}</td>
+                    <td>{product.product_stock}</td>
+                    <td class="price">&euro;{Number(product.product_price).toFixed(2)}</td>
+                </tr>
+                {/each}
+              </tbody>
+            </table>
+          </div>
+```
 
 
 
