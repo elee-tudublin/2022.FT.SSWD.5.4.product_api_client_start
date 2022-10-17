@@ -204,18 +204,6 @@ Also note the **`$`** symbol before categories in line 23. This means that the p
 
 This is similar to categories.  Again there is a subscription to  **`$products`** so that the page is updated whenever the store updates. You will see this when a category link is clicked.
 
-![image-20221016235829032](C:\Users\elee-tudublin\AppData\Roaming\Typora\typora-user-images\image-20221016235829032.png)
-
-
-
-## Test the Application
-
-First **open and start the server API app**, so that it is running and ready for http connections. Then start the SvelteKit ap.
-
-In a web browser, open http://localhost:5173. The page should load and display the data.
-
-Check for details in the browser console where you will say the result of any logging, errors, etc.
-
 ``` html
           <div id="products">
             <table class="table table-striped table-bordered table-hover">
@@ -243,6 +231,19 @@ Check for details in the browser console where you will say the result of any lo
             </table>
           </div>
 ```
+
+
+
+## Test the Application
+
+First **open and start the server API app**, so that it is running and ready for http connections. Then start the SvelteKit ap.
+
+In a web browser, open http://localhost:5173. The page should load and display the data.
+
+Check for details in the browser console where you will say the result of any logging, errors, etc.
+
+
+![completed](./media/finished.png)
 
 
 
