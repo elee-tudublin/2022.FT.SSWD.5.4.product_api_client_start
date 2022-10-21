@@ -8,7 +8,7 @@ Enda Lee 2022
 2. Download the start site from this repository.
 3. Open in VS Code (separate to the server API instance).
 4. In a terminal run `npm install`.
-5. Start the application using `npm run start`.
+5. Start the application using `npm run dev`.
 
 
 
