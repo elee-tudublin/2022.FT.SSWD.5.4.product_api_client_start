@@ -142,7 +142,7 @@ export const getProductsByCat= async (cat_id = 0) => {
     // 
     if (cat_id > 0) {
         const data = await getAPIData(`/product/bycat/${cat_id}`);
-        categories.set(data);
+        products.set(data);
     } else {
         getAllProducts();
     }
