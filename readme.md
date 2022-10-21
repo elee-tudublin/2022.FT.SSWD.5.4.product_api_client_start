@@ -90,85 +90,68 @@ The store script defines two writable store objects for product and category  pl
 **`productStore.js`** code:
 
 ```javascript
-// import dependencies
 import { writable } from 'svelte/store';
+
 
 // .env variables starting with VITE_ are accessible client and server side 
 const base_url = import.meta.env.VITE_API_BASE_URL
 
-// two writable stores for products and categories
-export const products = writable([]);
-export const categories = writable([]);
+// declare writable stores for products and categories
+export let products = writable([]);
+export let categories = writable([]);
 
 
-// Function to get all products
-// base_url is defined in .env
-
-export const getAllProducts = async () => {
-
+// Function to fetch and return data from an API
+// Full URI based on base_url + endpoint
+const getAPIData = async (endpoint = '') => {
     try {
-        const response = await fetch(`${base_url}/product`);
+        const response = await fetch(`${base_url}${endpoint}`);
         const data = await response.json();
-        console.log(data);
+        //console.log(data);
+        return data;
 
-        // update the writable store with the product data retrieved
-        products.set(data);
     } catch (err) {
-        // @ts-ignore
         console.log('getAllProducts() error (store) ', err.message);
     } finally {
 
     }
 }
 
-// Get all categories
+// Function to get all products from the api
+// sets the products store
+export const getAllProducts = async () => {
+
+    const data = await getAPIData('/product');
+    products.set(data);
+}
+
+// Function to get all categories from the api
+// sets the categories store
 export const getAllCategories= async () => {
 
-    try {
-        const response = await fetch(`${base_url}/category`);
-        const data = await response.json();
-        console.log(data);
-
-        // update the writable store with the category data retrieved
-        categories.set(data);
-    } catch (err) {
-        // @ts-ignore
-        console.log('getAllCategories() error (store) ', err.message);
-    } finally {
-
-    }        
+    const data = await getAPIData('/category');
+    categories.set(data);     
 
 }
 
-// Get products by category id
-export const getProductsByCat = async (cat_id = 0) => {
 
-    // If a category id > 0 is provided
+// Function to get products in a category (by category id)
+// sets the products store
+export const getProductsByCat= async (cat_id = 0) => {
+
+    // 
     if (cat_id > 0) {
-
-        try {
-            const response = await fetch(`${base_url}/product/bycat/${cat_id}`);
-            const data = await response.json();
-            console.log(data);
-
-            // update the writable store with the product data retrieved
-            products.set(data);
-        } catch (err) {
-            // @ts-ignore
-            console.log('getProductsByCat(cat_id) error (store) ', err.message);
-        } finally {
-    
-        }
-
-    // otherwise get all products    
+        const data = await getAPIData(`/product/bycat/${cat_id}`);
+        categories.set(data);
     } else {
         getAllProducts();
     }
+
 }
 
-// call the functions to initialise the store
-getAllProducts();
-getAllCategories();
+// Initialise the store when loaded
+await getAllProducts();
+await getAllCategories();
 
 ```
 
